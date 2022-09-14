@@ -3,35 +3,39 @@ import {
   useDisconnect,
   useMetamask,
   useSDK,
-} from "@thirdweb-dev/react";
-import type { NextPage } from "next";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useState } from "react";
+} from "@thirdweb-dev/react"
+import type { NextPage } from "next"
+import { signIn, signOut, useSession } from "next-auth/react"
+import { useState, useEffect } from "react"
 
 const Home: NextPage = () => {
-  const sdk = useSDK();
-  const address = useAddress();
-  const connect = useMetamask();
-  const disconnect = useDisconnect();
-  const { data: session } = useSession();
+  const sdk = useSDK()
+  const address = useAddress()
+  const connect = useMetamask()
+  const disconnect = useDisconnect()
+  const { data: session } = useSession()
 
-  const [secret, setSecret] = useState();
+  const [secret, setSecret] = useState()
+
+  useEffect (() => {
+    console.log(session)
+  }, [session])
 
   const getSecret = async () => {
-    const res = await fetch("/api/secret");
-    const data = await res.json();
-    setSecret(data);
-  };
+    const res = await fetch("/api/secret")
+    const data = await res.json()
+    setSecret(data)
+  }
 
   const loginWithWallet = async () => {
     try {
-      const domain = "example.com";
+      const domain = process.env.NEXT_PUBLIC_DOMAIN_URL;
       const payload = await sdk?.auth.login(domain);
       await signIn("credentials", { payload: JSON.stringify(payload) });
     } catch (err) {
-      throw err;
+      throw err
     }
-  };
+  }
 
   return (
     <div>
@@ -61,7 +65,7 @@ const Home: NextPage = () => {
       <button onClick={getSecret}>Get Secret</button>
       <pre>Secret: {JSON.stringify(secret || null)}</pre>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
