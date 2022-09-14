@@ -11,9 +11,16 @@ npm install
 yarn install
 ```
 
+Create `.env` file with the PostgreSQL database URL:
+
+```
+DATABASE_URL=postgres://username:password@domainname:5432/databasename
+```
+
 Next, you need to create a `.env.local` file and add the `ADMIN_PRIVATE_KEY` variable to it with the private key of the wallet you want to use as the admin wallet to generate and verify payloads. Your file should use something like the following:
 
 ```.env.local
+NEXT_PUBLIC_DOMAIN_URL=localhost:3000
 ADMIN_PRIVATE_KEY=...
 ```
 
