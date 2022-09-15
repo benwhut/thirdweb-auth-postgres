@@ -37,7 +37,7 @@ GOOGLE_CLIENT_ID=...
 GOOGLE_CLIENT_SECRET=...
 ```
 
-Finally, you can run the project with one of the following commands:
+Finally, you can run the project with the following command:
 
 ```bash
 yarn dev
