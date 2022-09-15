@@ -1,7 +1,7 @@
 ## Getting Started
 
 
-This example demonstrates how to use thirdweb Auth + Next Auth and store your users in a PostgreSQL database using the [Prisma Adapter](https://next-auth.js.org/adapters/prisma).
+This example demonstrates how to use thirdweb Auth + Next Auth and store your users in a PostgreSQL database using the [Prisma Adapter](https://next-auth.js.org/adapters/prisma). Note that this version has some outstanding issues that need to be resolved (see the "Issues" section below).
 
 To run the project, first clone this repository, and then run one of the following commands to install the dependencies:
 
